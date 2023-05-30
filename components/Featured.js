@@ -5,7 +5,6 @@ import ButtonLink from '@/components/ButtonLink'
 import CartIcon from '@/components/icons/CartIcon'
 import { useContext } from 'react'
 import { CartContext } from '@/components/CartContext'
-import { set } from 'mongoose'
 
 const Bg = styled.div`
   background-color: #222;
@@ -15,7 +14,11 @@ const Bg = styled.div`
 const Title = styled.h1`
   font-weight: normal;
   margin: 0;
-  font-size: 3rem;
+  font-size: 1.5rem;
+  @media screen and (min-width: 768px) {
+    font-size: 3rem;
+  }
+
 `
 const Desc = styled.p`
   color: #aaa;
@@ -23,10 +26,22 @@ const Desc = styled.p`
 `
 const ColumnsWrapper = styled.div`
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-columns: 1fr;
   gap: 40px;
   img{
     max-width: 100%;
+    max-height: 200px;
+    display: block;
+    margin: 0 auto;
+  }
+  div:nth-child(1) {
+    order: 2;
+  }
+  @media screen and (min-width: 768px) {
+    grid-template-columns: 1.1fr 0.9fr;
+    div:nth-child(1) {
+      order: 0;
+    }
   }
 `
 const Column = styled.div`
@@ -54,7 +69,7 @@ export default function Featured({product}) {
               <Title>{product.title}</Title>
               <Desc>{product.description}</Desc>
               <ButtonWrapper>
-                <ButtonLink href={'/products/'+product._id} outline={1} white={1}>Read more</ButtonLink>
+                <ButtonLink href={'/product/'+product._id} outline={1} white={1}>Read more</ButtonLink>
                 <Button white onClick={addFeaturedToCart}>
                   <CartIcon />
                   Add to cart
