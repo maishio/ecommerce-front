@@ -1,7 +1,7 @@
 import Button from '@/components/Button'
 import Center from '@/components/Center'
 import Header from '@/components/Header'
-import { styled } from 'styled-components'
+import styled from 'styled-components'
 import { useState, useContext, useEffect } from 'react'
 import { CartContext } from '@/components/CartContext'
 import axios from 'axios'
